@@ -8,7 +8,7 @@ platforms
 #plugins
 plugins/*
 
-# Prepos
+# Prepros
 prepros.config
 
 # Logs
