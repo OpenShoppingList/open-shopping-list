@@ -13,5 +13,4 @@ function closeMobile() {
 }
 
 hamburgerButton.addEventListener('click', openMobile);
-mobileNav.addEventListener('click', closeMobile);
 backdrop.addEventListener('click', closeMobile);
