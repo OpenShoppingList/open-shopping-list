@@ -2,7 +2,11 @@
 /.vscode
 
 # Platforms
-/platforms
+platforms/*
+platforms
+
+#plugins
+plugins/*
 
 # Prepos
 prepros.config
@@ -111,20 +115,3 @@ dist
 
 # TernJS port file
 .tern-port
-plugins/android.json
-plugins/cordova-plugin-whitelist/CONTRIBUTING.md
-plugins/cordova-plugin-whitelist/LICENSE
-plugins/cordova-plugin-whitelist/NOTICE
-plugins/cordova-plugin-whitelist/plugin.xml
-plugins/cordova-plugin-whitelist/package.json
-plugins/cordova-plugin-whitelist/RELEASENOTES.md
-plugins/cordova-plugin-whitelist/tests/package.json
-plugins/cordova-plugin-whitelist/tests/plugin.xml
-plugins/cordova-plugin-whitelist/tests/README.md
-plugins/cordova-plugin-whitelist/tests/scripts/remove-access.js
-plugins/cordova-plugin-whitelist/tests/src/android/WhitelistAPI.java
-plugins/cordova-plugin-whitelist/tests/tests.js
-plugins/cordova-plugin-whitelist/tests/www/whitelist.js
-plugins/fetch.json
-plugins/cordova-plugin-whitelist/src/android/WhitelistPlugin.java
-plugins/cordova-plugin-whitelist/README.md
