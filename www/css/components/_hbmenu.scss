@@ -1,0 +1,24 @@
+$width: 30px;
+
+.hb-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 24px;
+    width: $width;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    box-sizing: border-box;
+
+    :focus {
+        outline: none;
+    }
+}
+
+.hb-line {
+    width: $width;
+    height: 3px;
+    background-color: #fff;
+}
