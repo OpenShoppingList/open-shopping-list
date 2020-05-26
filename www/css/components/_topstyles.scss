@@ -8,3 +8,7 @@ main {
     padding-top: 56px;
     min-height: calc(100% - 56px);
 }
+
+.transition {
+    transition: all 500ms;
+}

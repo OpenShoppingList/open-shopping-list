@@ -1,14 +1,16 @@
 const hamburgerButton = document.querySelector('.hb-button');
-const mobileNav = document.querySelector('.side-drawer');
+const sideDrawer = document.querySelector('.side-drawer');
 const backdrop = document.querySelector('.backdrop');
 
+sideDrawer.classList.add('transition');
+
 function openMobile() {
-    mobileNav.classList.add('open');
+    sideDrawer.classList.add('open');
     backdrop.classList.add('open');
 }
 
 function closeMobile() {
-    mobileNav.classList.remove('open');
+    sideDrawer.classList.remove('open');
     backdrop.classList.remove('open');
 }
 
