@@ -17,27 +17,21 @@ let data = {
     ]
 };
 
-var addListButtonValue = '';
-document.getElementById('add-list-button').addEventListener('click', function() {
-    if (document.getElementById('add-list-input').value && addListButtonValue !== document.getElementById('add-list-input').value) {
+function addList(name) {
+    let isUsed = false;
+    for (let i = 0; i < data.lists.length; i++) {
+        if (data.lists[i].name === name || !name) {
+            isUsed = true;
+        }
+    }
+    if (isUsed === false) {
         data.lists.push({
-            name: document.getElementById('add-list-input').value,
+            name: name,
             items: []
         });
         render(data.lists.length - 1, data.lists.length - 1);
     }
-    addListButtonValue = document.getElementById('add-list-input').value
-});
-
-document.getElementById('add-list-input').addEventListener('change', function() {
-    if (document.getElementById('add-list-input').value) {
-        data.lists.push({
-            name: document.getElementById('add-list-input').value,
-            items: []
-        });
-        render(data.lists.length - 1, data.lists.length - 1);
-    }
-});
+}
 
 function render(firstList, lastList) {
     function renderList(i) {
@@ -95,3 +89,11 @@ function render(firstList, lastList) {
         }
     }
 }
+
+document.getElementById('add-list-button').addEventListener('click', function() {
+    addList(document.getElementById('add-list-input').value);
+});
+
+document.getElementById('add-list-input').addEventListener('change', function() {
+    addList(this.value);
+});
