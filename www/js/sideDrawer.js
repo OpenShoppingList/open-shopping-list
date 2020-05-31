@@ -1,5 +1,5 @@
 const hamburgerButton = document.querySelector('.hb-button');
-const sideDrawer = document.querySelector('.side-drawer');
+const sideDrawer = document.querySelector('#side-drawer');
 const backdrop = document.querySelector('.backdrop');
 
 sideDrawer.classList.add('transition');

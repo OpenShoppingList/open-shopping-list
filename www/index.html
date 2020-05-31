@@ -39,19 +39,17 @@
             <div class="toolbar-logo">Open Shopping List</div>
         </nav>
     </header>
-        <nav class="side-drawer">
+        <nav class="side-drawer" id="side-drawer">
             <h3 class="list-title">My Lists</h3>
-            <ul class="lists" data-lists>
-                <li class="list-name">List 1</li>
-                <li class="list-name">List 2</li>
+            <input type="text" id="add-list-input">
+            <button id="add-list-button">Add list</button>
+            <ul class="lists">
             </ul>
         </nav>
         <div class="backdrop"></div>
     <main>
-        <input type="text" id="add-list-input">
-        <button id="add-list-button">Add list</button>
-        <section id="lists">
-        </section>
+      <input type="checkbox" id="test" value="">
+      <label for="test">test</label>
     </main>
     <script type="text/javascript" defer src="cordova.js"></script>
     <script type="text/javascript" defer src="js/sideDrawer.js"></script>
