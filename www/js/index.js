@@ -116,7 +116,7 @@ function render(firstList, lastList) {
               name: name
             });
             render(currentList, currentList);
-            name = '';
+            this.value = '';
           }
         });
         let divButton = document.createElement('button');
@@ -128,7 +128,7 @@ function render(firstList, lastList) {
               name: name
             });
             render(currentList, currentList);
-            name = '';
+            this.parentNode.getElementsByTagName('input')[0].value = '';
           }
         });
         let divButtonText = document.createTextNode('Add list item');
@@ -168,7 +168,7 @@ function render(firstList, lastList) {
 
 // opening a "add list"-dialog
 document.getElementById('add-list-button').addEventListener('click', function() {
-  navigator.notification.prompt('Please enter the list name', function(results) {
+  navigator.notification.prompt('Please enter the list name.', function(results) {
     addList(results.input1);
   }, 'Add a list');
 });
