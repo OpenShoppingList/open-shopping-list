@@ -21,41 +21,14 @@ under the License.
 let data = {
   selectedList: 0,
   lists: [
-    {
-      name: 'list',
-      items: [
-        {
-          name: 'item',
-          checked: false,
-          favorite: false
-        }
-      ]
-    },
-    {
-      name: 'list1',
-      items: [
-        {
-          name: 'item',
-          checked: false,
-          favorite: false
-        }
-      ]
-    },
-    {
-      name: 'list2',
-      items: [
-        {
-          name: 'item',
-          checked: false,
-          favorite: false
-        }
-      ]
-    }
+    
   ],
   settings: [
 
   ]
 };
+
+const main = document.getElementById('main');
 
 // only adding a new list if there isn't already another one with the same name
 function addList(name) {
@@ -74,11 +47,20 @@ function addList(name) {
   }
 }
 
-// rending everything
+// rendering everything
 function render(firstList, lastList) {
   // adding a second parameter if not parsed probably
   if (!lastList) {
     lastList = firstList + 1;
+    main.innerHTML = '';
+    let addListButton = document.createElement('button');
+    addListButton.innerText = 'Add List';
+    main.appendChild(addListButton);
+    addListButton.addEventListener('click', function() {
+      navigator.notification.prompt('Please enter the list name.', function(results) {
+        addList(results.input1);
+      }, 'Add a list');
+    });
   }
   // checking for data validity
   if (firstList >= 0 && firstList <= data.lists.length && lastList >= 0 && lastList <= data.lists.length && firstList <= lastList) {
