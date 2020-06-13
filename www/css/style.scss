@@ -1,39 +1,374 @@
-@use "components/topstyles";
-@use "components/toolbar";
-@use "components/sidedrawer";
-@use "components/hbmenu";
-@use "components/backdrop";
-@use "components/bottomstyles";
+@use '_config.scss';
 
-.list {
+h1 {
+  font-size: 1.5em;
+}
+
+h2 {
+  font-size: 1.25em;
+}
+
+#nav-toggle {
   display: none;
 }
 
-.list:target {
-  display: block;
-}
-
-input[type=checkbox] {
-  display: none;
-}
-
-label {
-  display: flex;
+nav {
   align-items: center;
+  background: var(--base-color);
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+  left: 0;
+  padding: 0 1em;
+  position: fixed;
+  text-align: left;
+  top: 0;
+  transform: translate(-100%, 0);
+  transition: transform .5s, visibility 0s .5s;
+  visibility: hidden;
+  width: 60%;
+  will-change: transform, visibility;
+  z-index: 3;
+  min-height: 20em;
+
+  &::before {
+
+  }
+
+  > * {
+    width: 100%;
+  }
+
+  > img {
+    display: flex;
+    width: calc(100% + 2em);
+    max-width: none;
+    height: 20%;
+  }
+
+  h2 {
+    margin: .5em 0 .25em 0;
+  }
+
+  ul {
+    padding: 0 0 0 .5em;
+    list-style: none;
+  }
+
+  button {
+    display: flex;
+    font-size: 1em;
+    background: none;
+    margin: .25em 0 0 0;
+
+    img {
+      width: 1em;
+      margin: 0 .5em 0 0;
+    }
+
+  }
+
+  > a {
+    display: flex;
+    margin: auto 0 .5em 0;
+    position: relative;
+
+
+
+    &::before {
+      display: flex;
+      content: '';
+      width: 100%;
+      height: .1em;
+      border-radius: .05em;
+      background: var(--secondary-color);
+      position: absolute;
+      top: -.25em;
+    }
+
+    img {
+      width: 1em;
+      height: 100%;
+      margin: 0 .5em 0 0;
+    }
+
+  }
+
 }
 
-label::before {
-  content: '';
-  display: inline-flex;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: red;
-  box-sizing: border-box;
-  margin: 0 5px 0 0;
+#nav-toggle:checked + nav {
+  transform: translate(0, 0);
+  visibility: visible;
+  transition: transform .5s, visibility 0s;
 }
 
-input[type=checkbox]:checked + label::before {
-  border: 5px solid red;
-  background: blue;
+#backdrop {
+  background: rgba(0, 0, 0, .5);
+  display: flex;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  transition: opacity .5s, visibility 0s .5s;
+  visibility: hidden;
+  width: 100%;
+  will-change: opacity, visibility;
+  z-index: 2;
+}
+
+#nav-toggle:checked ~ #backdrop {
+  opacity: 1;
+  visibility: visible;
+  transition: visibility 0s, opacity .5s;
+}
+
+header {
+  display: flex;
+  width: 100%;
+  height: 2.5em;
+  font-size: 1rem;
+  background: var(--primary-accent-color);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  color: config.$base-color;
+  position: fixed;
+  z-index: 1;
+
+  img {
+    width: 100%;
+  }
+
+  label {
+    display: flex;
+    height: 80%;
+    width: 2.5em;
+    flex: auto 0 0;
+    margin: 0 auto 0 0;
+  }
+
+  h1 {
+    white-space: nowrap;
+  }
+
+  a {
+    display: flex;
+    height: 65%;
+    width: 2.5em;
+    flex: auto 0 0;
+    margin: 0 0 0 auto;
+  }
+
+}
+
+main {
+  font-size: 1rem;
+  padding: 3em 1em 0 1em;
+
+  .list,
+  #settings {
+    display: none;
+    will-change: display;
+
+    &:target {
+      display: flex;
+    }
+
+  }
+
+  .list {
+    flex-flow: column nowrap;
+    font-size: 1rem;
+
+    h2 {
+      font-size: 1.25em;
+    }
+
+    h2::after,
+    summary::after {
+      content: '';
+      display: flex;
+      width: 100%;
+      font-size: 1rem;
+      height: .1em;
+      border-radius: .05em;
+      background: var(--secondary-color);
+    }
+
+    .add-item {
+      display: flex;
+      flex-flow: row nowrap;
+      margin: .25em 0 0 0;
+      padding: 0 .25em;
+
+      input {
+        border: .2em solid var(--secondary-color);
+        border-radius: .25em;
+        padding: .5em;
+        flex: auto 1 1;
+        margin: 0 .5em 0 0;
+        transition: border .15s;
+
+        &:hover, &:active, &:focus {
+          border: .2em solid var(--primary-color);
+        }
+
+      }
+
+      button {
+        border-radius: .25em;
+        padding: .5em;
+        background: var(--primary-accent-color);
+        color: var(--base-color);
+        flex: auto 0 0;
+      }
+
+    }
+
+    ul {
+      list-style: none;
+      padding: 0 .25em;
+      margin: .25em 0 0 0;
+
+      li {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        position: relative;
+        margin: .4em 0;
+
+        &::after {
+          display: flex;
+          content: '';
+          width: 100%;
+          height: .1em;
+          border-radius: .05em;
+          background: var(--secondary-color);
+          position: absolute;
+          bottom: -.25em;
+        }
+
+        &:first-of-type {
+          margin: 0 0 .4em 0;
+        }
+
+
+        label {
+          display: flex;
+
+          input[type=checkbox] {
+            display: none;
+          }
+
+          img {
+            height: 1em;
+            display: none;
+            will-change: display;
+          }
+
+          input[type=checkbox]:checked ~ img[data-checked="true"],
+          input[type=checkbox]:not(:checked) ~ img[data-checked="false"] {
+            display: initial;
+          }
+
+        }
+
+        a {
+          flex: auto 1 1;
+          display: flex;
+          flex-flow: row nowrap;
+
+          .name {
+            margin: 0 0 0 .25em;
+          }
+
+          .quantity {
+            margin: 0 0 0 auto;
+          }
+
+          .price {
+            margin: 0 .25em;
+          }
+
+        }
+
+      }
+
+    }
+
+    details {
+      margin: .25em 0 0 0;
+    }
+
+  }
+
+  .edit {
+    font-size: 1rem;
+
+    ul li {
+
+      &:last-of-type::after {
+        display: none;
+      }
+
+      label {
+        align-items: center;
+
+        input[type=text],
+        input[type=number] {
+          border: .2em solid var(--secondary-color);
+          border-radius: .25em;
+          font-size: .6em;
+          padding: .25em;
+          margin: 0 calc(.25em / .6);
+        }
+
+        &.price input {
+          -moz-appearance: textfield;
+          text-align: right;
+
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+
+        }
+
+        img {
+          margin: 0 .25em 0 0;
+        }
+
+      }
+
+      button {
+        background: var(--primary-accent-color);
+        color: var(--base-color);
+        border-radius: .25em;
+        padding: .5em;
+        font-size: .75em;
+      }
+
+    }
+
+  }
+
+}
+
+@media screen and (max-width: calc((1rem + .5vw) * 18)), screen and (max-width: 19.75rem) {
+
+  * {
+    display: none !important;
+  }
+
+  :root, body {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--primary-accent-color);
+    height: calc(var(--ns-height) * 100);
+  }
+
 }
