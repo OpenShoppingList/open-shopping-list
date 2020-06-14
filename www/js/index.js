@@ -16,78 +16,34 @@ under the License.
 */
 
 // an example data structure
-var data = {
-  selectedList: 2,
-  lists: [
-    {
-      name: 'list',
-      items: [
-        {
-          name: 'item',
-          quantity: '500g',
-          price: '5',
-          checked: false,
-          favorite: false
-        }
-      ]
-    },
-    {
-      name: 'list1',
-      items: [
-        {
-          name: 'item',
-          quantity: '500g',
-          price: '5',
-          checked: false,
-          favorite: false
-        }
-      ]
-    },
-    {
-      name: 'list2',
-      items: [
-        {
-          name: 'item',
-          quantity: '500g',
-          price: '5',
-          checked: false,
-          favorite: false
-        },
-        {
-          name: 'item',
-          quantity: '500g',
-          price: '5',
-          checked: false,
-          favorite: false
-        }
-      ]
+var data = JSON.parse(localStorage.getItem('data'));
+if (!data) {
+  data = {
+    selectedList: 0,
+    lists: [
+      {
+        name: 'Example list',
+        items: [
+          {
+            name: 'Example item',
+            quantity: '500g',
+            price: '5',
+            checked: false,
+            favorite: false
+          }
+        ]
+      }
+    ],
+    settings: {
+      currency: '$'
     }
-  ],
-  settings: {
-    currency: '€'
-  }
-};
+  };
+  localStorage.setItem('data', JSON.stringify(data));
+}
 
 // closing the navigation
 function closeNav() {
   document.getElementById('nav-toggle').checked = false;
-}
-
-// only adding a new list if there isn't already another one with the same name
-function addList(name) {
-  let isUsed = false;
-  for (let i = 0; i < data.lists.length; i++) {
-    if (data.lists[i].name === name || !name) {
-      isUsed = true;
-    }
-  }
-  if (!isUsed) {
-    data.lists.push({
-      name: name,
-      items: []
-    });
-    render(data.lists.length - 1);
-  }
 }
 
 // rendering everything
@@ -95,20 +51,16 @@ var item;
 function render(firstList, lastList, onlyFavorites = false) {
   // adding a second parameter if not parsed probably
   if (!lastList) {
-    lastList = firstList + 1;
+    lastList = firstList;
   }
   if (lastList === false || lastList === true) {
     onlyFavorites = lastList;
-    lastList = firstList + 1;
+    lastList = firstList;
   }
   // checking for data validity
-  if (firstList >= 0 && firstList <= data.lists.length && lastList >= 0 && lastList <= data.lists.length && firstList <= lastList) {
-    // fixing the formating if the parameters parsed are the same
-    if (firstList === lastList) {
-      lastList++;
-    }
+  if (firstList >= 0 && firstList < data.lists.length && lastList >= 0 && lastList < data.lists.length && firstList <= lastList) {
     // running through the lists
-    for (let i = firstList; i < lastList; i++) {
+    for (let i = firstList; i < lastList + 1; i++) {
       //only when rendering all list items
       if (!onlyFavorites) {
         // adding new lists to the navigation if necessary
@@ -346,7 +298,7 @@ function render(firstList, lastList, onlyFavorites = false) {
 
 // opening a dialog for adding a new list
 document.getElementById('add-list').addEventListener('click', function() {
-  navigator.notification.prompt('Please enter the list name.', function(results) {
+  navigator.notification.prompt('Please enter the list name', function(results) {
     let name = results.input1;
     let isUsed = false;
     for (let i = 0; i < data.lists.length; i++) {
@@ -361,6 +313,7 @@ document.getElementById('add-list').addEventListener('click', function() {
       });
       render(data.lists.length - 1);
       closeNav();
+      window.location.hash = '#list-' + (data.lists.length - 1);
     }
   }, 'Add a list');
 });
@@ -369,7 +322,7 @@ document.getElementById('add-list').addEventListener('click', function() {
 document.getElementById('open-settings').addEventListener('click', closeNav);
 
 // updating the stored list item data when clicking on the save button in the edit menu
-document.getElementById('edit-item').getElementsByTagName('button')[0].addEventListener('click', function() {
+document.getElementById('edit-item').getElementsByClassName('save')[0].addEventListener('click', function() {
   if (list !== undefined && item !== undefined) {
     data.lists[list].items[item].name = this.parentNode.parentNode.getElementsByClassName('name')[0].getElementsByTagName('input')[0].value;
     data.lists[list].items[item].quantity = this.parentNode.parentNode.getElementsByClassName('quantity')[0].getElementsByTagName('input')[0].value;
@@ -378,6 +331,12 @@ document.getElementById('edit-item').getElementsByTagName('button')[0].addEventL
     data.lists[list].items[item].favorite = this.parentNode.parentNode.getElementsByClassName('favorite')[0].getElementsByTagName('input')[0].checked;
     window.location.hash = '#list-' + list;
   }
+});
+
+document.getElementById('settings').getElementsByClassName('save')[0].addEventListener('click', function() {
+  data.settings.currency = this.parentNode.parentNode.getElementsByClassName('currency')[0].getElementsByTagName('input')[0].value;
+  render(0, data.lists.length - 1);
+  window.location.hash = '#list-' + list;
 });
 
 // storing the currrent list number, rendering it after an other page was opened and rendering the lsit items information when the edit menu is opened
@@ -401,10 +360,24 @@ window.addEventListener('hashchange', function(event) {
     editItem.getElementsByClassName('name')[0].getElementsByTagName('input')[0].value = data.lists[list].items[item].name;
     editItem.getElementsByClassName('quantity')[0].getElementsByTagName('input')[0].value = data.lists[list].items[item].quantity;
     editItem.getElementsByClassName('price')[0].getElementsByTagName('input')[0].value = data.lists[list].items[item].price.replace(data.settings.currency, '');
+    editItem.getElementsByClassName('price')[0].getElementsByClassName('currency')[0].textContent = data.settings.currency;
     editItem.getElementsByClassName('checked')[0].getElementsByTagName('input')[0].checked = data.lists[list].items[item].checked;
     editItem.getElementsByClassName('favorite')[0].getElementsByTagName('input')[0].checked = data.lists[list].items[item].favorite;
   }
+  if(hash.includes('#settings')) {
+    let settings = document.getElementById('settings');
+    settings.getElementsByClassName('currency')[0].getElementsByTagName('input')[0].value = data.settings.currency;
+  }
 });
+
+// storing everything before the app is put into background or closed
+document.addEventListener('pause', function(event) {
+  localStorage.setItem('data', JSON.stringify(data));
+});
+window.addEventListener('beforeunload', function(event) {
+  localStorage.setItem('data', JSON.stringify(data));
+});
+
 
 // unchecking favorites
 for (var i = 0; i < data.lists.length; i++) {
@@ -416,5 +389,6 @@ for (var i = 0; i < data.lists.length; i++) {
 }
 
 // rendering everything on load
-render(0, data.lists.length);
+document.getElementById('nav-toggle').checked = false;
+render(0, data.lists.length - 1);
 window.location.hash = '#list-' + list;

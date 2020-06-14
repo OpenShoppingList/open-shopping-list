@@ -8,10 +8,10 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   sodipodi:docname="circle.svg"
+   sodipodi:docname="plus-dark.svg"
    id="svg4"
    version="1.1"
-   viewBox="0 0 512 512">
+   viewBox="0 0 448 512">
   <metadata
      id="metadata10">
     <rdf:RDF>
@@ -20,6 +20,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -27,16 +28,16 @@
      id="defs8" />
   <sodipodi:namedview
      inkscape:current-layer="svg4"
-     inkscape:window-maximized="1"
-     inkscape:window-y="-8"
-     inkscape:window-x="-8"
-     inkscape:cy="256"
-     inkscape:cx="256"
-     inkscape:zoom="1.4355469"
+     inkscape:window-maximized="0"
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:cy="565.69101"
+     inkscape:cx="128.75379"
+     inkscape:zoom="0.71777344"
      showgrid="false"
      id="namedview6"
-     inkscape:window-height="1377"
-     inkscape:window-width="2560"
+     inkscape:window-height="1368"
+     inkscape:window-width="1278"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0"
      guidetolerance="10"
@@ -44,9 +45,10 @@
      objecttolerance="10"
      borderopacity="1"
      bordercolor="#666666"
-     pagecolor="#ffffff" />
+     pagecolor="#ffffff"
+     inkscape:document-rotation="0" />
   <path
-     style="stroke:none;stroke-opacity:1;fill:#484554;fill-opacity:1"
      id="path2"
-     d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200z" />
+     d="M 416,208 H 272 V 64 C 272,46.33 257.67,32 240,32 h -32 c -17.67,0 -32,14.33 -32,32 V 208 H 32 C 14.33,208 0,222.33 0,240 v 32 c 0,17.67 14.33,32 32,32 h 144 v 144 c 0,17.67 14.33,32 32,32 h 32 c 17.67,0 32,-14.33 32,-32 V 304 h 144 c 17.67,0 32,-14.33 32,-32 v -32 c 0,-17.67 -14.33,-32 -32,-32 z"
+     style="stroke-width:0.999998;fill:#ffffff;fill-opacity:1" />
 </svg>
