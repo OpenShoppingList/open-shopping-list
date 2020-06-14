@@ -19,39 +19,105 @@
 
 <html>
 <head>
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <title>openShoppingList</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+  <link rel="stylesheet" href="fonts/roboto/roboto.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Open Shopping List</title>
 </head>
 <body>
-    <header class="toolbar">
-        <nav class="toolbar-navigation">
-            <div>
-                <span class="hb-button">
-                    <span class="hb-line"></span>
-                    <span class="hb-line"></span>
-                    <span class="hb-line"></span>
-                </span>
-            </div>
-            <div class="toolbar-logo">Open Shopping List</div>
-        </nav>
-    </header>
-        <nav class="side-drawer" id="side-drawer">
-            <h3 class="list-title">My Lists</h3>
-            <button id="add-list-button">Add list</button>
-            <ul class="lists">
-            </ul>
-        </nav>
-        <div class="backdrop"></div>
-    <main id="main">
-      <input type="checkbox" id="test" value="">
-      <label for="test">test</label>
-    </main>
-    <script type="text/javascript" defer src="cordova.js"></script>
-    <script type="text/javascript" defer src="js/sideDrawer.js"></script>
-    <script type="text/javascript" defer src="js/index.js"></script>
+  <section id="not-supported">
+    <span>Your browser isn't supported, please update or switch to a more modern one...</span>
+  </section>
+  <input type="checkbox" id="nav-toggle">
+  <nav>
+    <img src="" alt="">
+    <h2>My Lists</h2>
+    <ul>
+    </ul>
+    <button id="add-list">
+      <img data-color-scheme="light" src="img/fontawesome/solid/plus.svg" alt="plus icon">
+      <img data-color-scheme="dark" src="img/fontawesome/solid/plus.svg" alt="plus icon">
+      Add list
+    </button>
+    <a id="open-settings" href="#settings">
+      <img data-color-scheme="light" src="img/fontawesome/solid/cog.svg" alt="plus icon">
+      <img data-color-scheme="dark" src="img/fontawesome/solid/cog.svg" alt="plus icon">
+      Settings
+    </a>
+  </nav>
+  <label id="backdrop" for="nav-toggle"></label>
+  <header>
+    <label for="nav-toggle">
+      <img src="img/fontawesome/solid/bars.svg" alt="menu">
+    </label>
+    <h1>Open Shopping List</h1>
+    <a href="#favorites">
+      <img src="img/fontawesome/solid/heart-dark.svg" alt="favorites">
+    </a>
+  </header>
+  <main>
+    <section id="favorites" class="list">
+      <h2>Favorites</h2>
+      <ul>
+        <li>No list selected</li>
+      </ul>
+    </section>
+    <section id="edit-item" class="list edit">
+      <h2>No item selected</h2>
+      <ul>
+        <li>
+          <label class="name">
+            Name:
+            <input type="text" name="" value="">
+          </label>
+        </li>
+        <li>
+          <label class="quantity">
+            Quantity:
+            <input type="text" name="" value="">
+          </label>
+        </li>
+        <li>
+          <label class="price">
+            Price:
+            <input type="number" name="" min="0" value="" step="0.01">
+            €
+          </label>
+        </li>
+        <li>
+          <label class="checked">
+            <input type="checkbox">
+            <img data-checked="false" data-color-scheme="light" src="img/fontawesome/regular/circle.svg" alt="circle icon">
+            <img data-checked="false" data-color-scheme="dark" src="img/fontawesome/regular/circle-dark.svg" alt="circle icon dark">
+            <img data-checked="true" data-color-scheme="light" src="img/fontawesome/solid/check-circle.svg" alt="checked circle icon">
+            <img data-checked="true" data-color-scheme="dark" src="img/fontawesome/solid/check-circle-dark.svg" alt="checked circle icon dark">
+            Checked
+          </label>
+        </li>
+        <li>
+          <label class="favorite">
+            <input type="checkbox">
+            <img data-checked="false" data-color-scheme="light" src="img/fontawesome/regular/circle.svg" alt="circle icon">
+            <img data-checked="false" data-color-scheme="dark" src="img/fontawesome/regular/circle-dark.svg" alt="circle icon dark">
+            <img data-checked="true" data-color-scheme="light" src="img/fontawesome/solid/check-circle.svg" alt="checked circle icon">
+            <img data-checked="true" data-color-scheme="dark" src="img/fontawesome/solid/check-circle-dark.svg" alt="checked circle icon dark">
+            Favorite
+          </label>
+        </li>
+        <li>
+          <button class="save">Save</button>
+        </li>
+      </ul>
+    </section>
+    <section id="settings">
+      <h2>Settings</h2>
+    </section>
+  </main>
+  <script type="text/javascript" defer src="cordova.js"></script>
+  <script type="text/javascript" defer src="js/nicesize.min.js"></script>
+  <script type="text/javascript" defer src="js/index.js"></script>
 </body>
 </html>
