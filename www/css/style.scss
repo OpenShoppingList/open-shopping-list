@@ -156,7 +156,6 @@ body > header {
 
   img {
     width: 100%;
-    background: config.$primary-accent-color;
   }
 
   label {
@@ -378,7 +377,7 @@ main {
 @media screen and (prefers-color-scheme: dark){
 
   header {
-      background: config.$base-color-dark;
+      background: config.$base-color-dark !important;
       border-bottom: .1em solid config.$primary-accent-color-dark;
   }
 
