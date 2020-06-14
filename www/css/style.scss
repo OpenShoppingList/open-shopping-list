@@ -29,7 +29,7 @@ nav {
   width: 60%;
   will-change: transform, visibility;
   z-index: 3;
-  min-height: 20em;
+  overflow-y: auto;
 
   &::before {
 
@@ -39,11 +39,31 @@ nav {
     width: 100%;
   }
 
-  > img {
+  header {
     display: flex;
+    background: config.$primary-accent-color;
+    color: config.$base-color;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    padding: inherit;
     width: calc(100% + 2em);
-    max-width: none;
-    height: 20%;
+    min-height: 8em;
+    justify-content: space-evenly;
+
+    img {
+      display: flex;
+      box-shadow: 0 0 1em config.$primary-color;
+      height: 5em;
+      width: 3.66em;
+      border-radius: 0.83em 0.29em  0.29em  0.29em;
+      object-fit: cover;
+      margin: .75em 0 .375em 0;
+    }
+
+    h1 {
+      margin: calc(.375em / 1.5) 0 calc(.75em / 1.5) 0;
+    }
+
   }
 
   h2 {
@@ -59,7 +79,7 @@ nav {
     display: flex;
     font-size: 1em;
     background: none;
-    margin: .25em 0 0 0;
+    margin: .25em 0 .5em 0;
 
     img {
       width: 1em;
@@ -72,8 +92,6 @@ nav {
     display: flex;
     margin: auto 0 .5em 0;
     position: relative;
-
-
 
     &::before {
       display: flex;
@@ -123,12 +141,12 @@ nav {
   transition: visibility 0s, opacity .5s;
 }
 
-header {
+body > header {
   display: flex;
   width: 100%;
   height: 2.5em;
   font-size: 1rem;
-  background: var(--primary-accent-color);
+  background: config.$primary-accent-color;
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -138,6 +156,7 @@ header {
 
   img {
     width: 100%;
+    background: config.$primary-accent-color;
   }
 
   label {
@@ -253,6 +272,10 @@ main {
           margin: 0 0 .4em 0;
         }
 
+        &:last-of-type::after {
+          display: none;
+        }
+
 
         label {
           display: flex;
@@ -263,13 +286,13 @@ main {
 
           img {
             height: 1em;
-            display: none;
+            display: none !important;
             will-change: display;
           }
 
-          input[type=checkbox]:checked ~ img[data-checked="true"],
-          input[type=checkbox]:not(:checked) ~ img[data-checked="false"] {
-            display: initial;
+          input[type=checkbox]:checked ~ img[data-checked="true"][data-color-scheme="light"],
+          input[type=checkbox]:not(:checked) ~ img[data-checked="false"][data-color-scheme="light"] {
+            display: initial !important;
           }
 
         }
@@ -307,10 +330,6 @@ main {
     font-size: 1rem;
 
     ul li {
-
-      &:last-of-type::after {
-        display: none;
-      }
 
       label {
         align-items: center;
@@ -350,6 +369,29 @@ main {
         font-size: .75em;
       }
 
+    }
+
+  }
+
+}
+
+@media screen and (prefers-color-scheme: dark){
+
+  header {
+      background: config.$base-color-dark;
+      border-bottom: .1em solid config.$primary-accent-color-dark;
+  }
+
+  main .list ul li label {
+
+    input[type=checkbox]:checked ~ img[data-checked="true"][data-color-scheme="light"],
+    input[type=checkbox]:not(:checked) ~ img[data-checked="false"][data-color-scheme="light"] {
+      display: none !important;
+    }
+
+    input[type=checkbox]:checked ~ img[data-checked="true"][data-color-scheme="dark"],
+    input[type=checkbox]:not(:checked) ~ img[data-checked="false"][data-color-scheme="dark"] {
+      display: initial !important;
     }
 
   }
