@@ -4,11 +4,8 @@
 # Platforms
 platforms
 
-# Plugins
+#plugins
 plugins
-
-# IntelliJ IDEA
-.idea
 
 # Prepros
 prepros.config
