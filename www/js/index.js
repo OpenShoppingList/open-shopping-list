@@ -356,7 +356,8 @@ document.getElementById('delete').addEventListener('click', function() {
       addList();
     }
     render(0, data.lists.length - 1);
-    if (list === 0 && data.lists.length === 1) {
+    if (list === 0) {
+      window.location.hash = '';
       window.location.hash = '#list-0';
     } else {
       window.location.hash = '#list-' + (list - 1);
