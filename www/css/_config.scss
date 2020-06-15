@@ -27,6 +27,7 @@ $secondary-color-dark: #fff;
 	color: var(--primary-color);
 	font-family: 'Roboto', sans-serif;
 	font-size: calc(1rem + (var(--ns-width) * .5));
+	font-size: calc(1.1rem + (var(--ns-width) * .55));
 	font-weight: 400;
 	//font-weight: 300-700[300=light, 400=regular, 500=medium, 600=semi-bold, 700=bold]
 	overflow: hidden;
@@ -37,7 +38,7 @@ $secondary-color-dark: #fff;
 *,
 *:before,
 *:after {
-	background: inherit;
+	background: none;
 	border: 0;
 	color: inherit;
 	font-family: inherit;
@@ -58,7 +59,8 @@ img[data-color-scheme='dark']{
 
 a,
 button,
-label {
+label,
+input {
 	transition: opacity .15s;
 }
 

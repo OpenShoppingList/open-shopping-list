@@ -46,6 +46,28 @@ function closeNav() {
   document.getElementById('nav-toggle').checked = false;
 }
 
+// adding a list
+function addList() {
+  navigator.notification.prompt('Please enter the list name', function(results) {
+    let name = results.input1;
+    let isUsed = false;
+    for (let i = 0; i < data.lists.length; i++) {
+      if (data.lists[i].name === name || !name) {
+        isUsed = true;
+      }
+    }
+    if (isUsed === false) {
+      data.lists.push({
+        name: name,
+        items: []
+      });
+      render(data.lists.length - 1);
+      closeNav();
+      window.location.hash = '#list-' + (data.lists.length - 1);
+    }
+  }, 'Add a list');
+}
+
 // rendering everything
 var item;
 function render(firstList, lastList, onlyFavorites = false) {
@@ -297,26 +319,7 @@ function render(firstList, lastList, onlyFavorites = false) {
 }
 
 // opening a dialog for adding a new list
-document.getElementById('add-list').addEventListener('click', function() {
-  navigator.notification.prompt('Please enter the list name', function(results) {
-    let name = results.input1;
-    let isUsed = false;
-    for (let i = 0; i < data.lists.length; i++) {
-      if (data.lists[i].name === name || !name) {
-        isUsed = true;
-      }
-    }
-    if (isUsed === false) {
-      data.lists.push({
-        name: name,
-        items: []
-      });
-      render(data.lists.length - 1);
-      closeNav();
-      window.location.hash = '#list-' + (data.lists.length - 1);
-    }
-  }, 'Add a list');
-});
+document.getElementById('add-list').addEventListener('click', addList);
 
 // close navigation when clicking on the settings button
 document.getElementById('open-settings').addEventListener('click', closeNav);
@@ -333,13 +336,39 @@ document.getElementById('edit-item').getElementsByClassName('save')[0].addEventL
   }
 });
 
+// updating the settings when clicking on the save button in the settings
 document.getElementById('settings').getElementsByClassName('save')[0].addEventListener('click', function() {
   data.settings.currency = this.parentNode.parentNode.getElementsByClassName('currency')[0].getElementsByTagName('input')[0].value;
   render(0, data.lists.length - 1);
   window.location.hash = '#list-' + list;
 });
 
-// storing the currrent list number, rendering it after an other page was opened and rendering the lsit items information when the edit menu is opened
+// deleting the currently selected list or item when clicking the delete button
+document.getElementById('delete').addEventListener('click', function() {
+  let hash = window.location.hash;
+  if (hash.includes('#list-')) {
+    for (var i = list; i < data.lists.length; i++) {
+      document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li')[list].remove();
+      document.getElementById('list-' + i).remove();
+    }
+    data.lists.splice(list, 1);
+    if (list === 0 && data.lists.length === 0) {
+      addList();
+    }
+    render(0, data.lists.length - 1);
+    if (list === 0 && data.lists.length === 1) {
+      window.location.hash = '#list-0';
+    } else {
+      window.location.hash = '#list-' + (list - 1);
+    }
+  } else if (hash === '#edit-item') {
+    data.lists[list].items.splice(item, 1);
+    render(list);
+    window.location.hash = 'list-' + list;
+  }
+});
+
+// storing the currrent list, rendering it after an other page was opened and rendering the list items information when the edit menu is opened
 var list = data.selectedList;
 window.addEventListener('hashchange', function(event) {
   let hash = window.location.hash;
@@ -351,10 +380,10 @@ window.addEventListener('hashchange', function(event) {
       render(list);
     }
   }
-  if(hash.includes('#favorites')) {
+  if(hash === '#favorites') {
     render(list, true);
   }
-  if(hash.includes('#edit-item')) {
+  if(hash === '#edit-item') {
     let editItem = document.getElementById('edit-item');
     editItem.getElementsByTagName('h2')[0].textContent = data.lists[list].name + ' > ' + data.lists[list].items[item].name;
     editItem.getElementsByClassName('name')[0].getElementsByTagName('input')[0].value = data.lists[list].items[item].name;
@@ -364,7 +393,7 @@ window.addEventListener('hashchange', function(event) {
     editItem.getElementsByClassName('checked')[0].getElementsByTagName('input')[0].checked = data.lists[list].items[item].checked;
     editItem.getElementsByClassName('favorite')[0].getElementsByTagName('input')[0].checked = data.lists[list].items[item].favorite;
   }
-  if(hash.includes('#settings')) {
+  if(hash === '#settings') {
     let settings = document.getElementById('settings');
     settings.getElementsByClassName('currency')[0].getElementsByTagName('input')[0].value = data.settings.currency;
   }
@@ -374,10 +403,6 @@ window.addEventListener('hashchange', function(event) {
 document.addEventListener('pause', function(event) {
   localStorage.setItem('data', JSON.stringify(data));
 });
-window.addEventListener('beforeunload', function(event) {
-  localStorage.setItem('data', JSON.stringify(data));
-});
-
 
 // unchecking favorites
 for (var i = 0; i < data.lists.length; i++) {
