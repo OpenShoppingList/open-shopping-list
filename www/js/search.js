@@ -1,11 +1,32 @@
 const addItemInput = document.getElementById('add-item-input');
 const matchList = document.getElementById('match-list');
 
+var getJSON = function(url) {
+    return new Promise(function(resolve, reject) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('get', url, true);
+      xhr.responseType = 'json';
+      xhr.onload = function() {
+        var status = xhr.status;
+        if (status == 200 || status == 0) {
+          resolve(xhr.response);
+        } else {
+          reject(status);
+        }
+      };
+      xhr.send();
+    });
+};
+
 // fetches the products_xx_xx.json
 const products = [];
-fetch('../data/products_en_US.json')
-    .then(response => response.json())
-    .then(result => products.push(...result));
+loadData = function () {
+    getJSON('data/products_en_US.json').then(function(data) {
+        products.push(...data);
+    }, function(status) {
+      console.log('Something went wrong.');
+    });
+}
 
 // Searches products_xx_xx.json and filters it
 function searchProducts(searchText) {
@@ -60,3 +81,5 @@ function addProduct(product) {
   }
 
 addItemInput.addEventListener('input', function() {searchProducts(addItemInput.value)});
+
+loadData();
