@@ -105,46 +105,6 @@ function render(firstList, lastList, onlyFavorites = false) {
           let h2Text = document.createTextNode(data.lists[i].name);
           h2.appendChild(h2Text);
           article.appendChild(h2);
-          let div = document.createElement('div');
-          div.className = 'add-item';
-          let divInput = document.createElement('input');
-          divInput.type = 'text';
-          divInput.addEventListener('keypress', function(event) {
-            let name = this.value;
-            if (name && event.key === 'Enter') {
-              let currentList = parseInt(this.parentNode.parentNode.id.replace('list-', ''));
-              data.lists[currentList].items.push({
-                name: name,
-                quantity: '',
-                price: '',
-                checked: false,
-                favorite: false
-              });
-              render(currentList);
-              this.value = '';
-            }
-          });
-          div.appendChild(divInput);
-          let divButton = document.createElement('button');
-          divButton.addEventListener('click', function() {
-            let name = this.parentNode.getElementsByTagName('input')[0].value;
-            if (name) {
-              let currentList = parseInt(this.parentNode.parentNode.id.replace('list-', ''));
-              data.lists[currentList].items.push({
-                name: name,
-                quantity: '',
-                price: '',
-                checked: false,
-                favorite: false
-              });
-              render(currentList);
-              this.parentNode.getElementsByTagName('input')[0].value = '';
-            }
-          });
-          let divButtonText = document.createTextNode('Add');
-          divButton.appendChild(divButtonText);
-          div.appendChild(divButton);
-          article.appendChild(div);
           document.body.getElementsByTagName('main')[0].appendChild(article);
         }
       }
@@ -380,11 +340,15 @@ window.addEventListener('hashchange', function(event) {
     if (oldURL.includes('#favorites') || oldURL.includes('#edit-item')) {
       render(list);
     }
+    let addItemButton = document.getElementById('add-item');
+    addItemButton.classList.remove('hidden');
   }
   if(hash === '#favorites') {
     render(list, true);
   }
   if(hash === '#edit-item') {
+    let addItemButton = document.getElementById('add-item');
+    addItemButton.classList.add('hidden');
     let editItem = document.getElementById('edit-item');
     editItem.getElementsByTagName('h2')[0].textContent = data.lists[list].name + ' > ' + data.lists[list].items[item].name;
     editItem.getElementsByClassName('name')[0].getElementsByTagName('input')[0].value = data.lists[list].items[item].name;
@@ -395,6 +359,8 @@ window.addEventListener('hashchange', function(event) {
     editItem.getElementsByClassName('favorite')[0].getElementsByTagName('input')[0].checked = data.lists[list].items[item].favorite;
   }
   if(hash === '#settings') {
+    let addItemButton = document.getElementById('add-item');
+    addItemButton.classList.add('hidden');
     let settings = document.getElementById('settings');
     settings.getElementsByClassName('currency')[0].getElementsByTagName('input')[0].value = data.settings.currency;
   }
@@ -403,6 +369,47 @@ window.addEventListener('hashchange', function(event) {
 // storing everything before the app is put into background or closed
 document.addEventListener('pause', function(event) {
   localStorage.setItem('data', JSON.stringify(data));
+});
+
+
+document.getElementById('add-item-input').addEventListener('keypress', function(event) {
+  let name = this.value;
+  if (name && event.key === 'Enter') {
+    let windowSearchLocation = new String(window.location);
+    let currentList = windowSearchLocation.split('-');
+    currentList = parseInt(currentList[1]);
+    data.lists[currentList].items.push({
+      name: name,
+      quantity: '',
+      price: '',
+      checked: false,
+      favorite: false
+    });
+    render(currentList);
+    this.value = '';
+    matchList.innerHTML = '';
+    matchList.classList.add('hidden');
+  }
+});
+
+document.getElementById('add-item-button').addEventListener('click', function() {
+  let name = this.parentNode.getElementsByTagName('input')[0].value;
+  if (name) {
+    let windowSearchLocation = new String(window.location);
+    let currentList = windowSearchLocation.split('-');
+    currentList = parseInt(currentList[1]);
+    data.lists[currentList].items.push({
+      name: name,
+      quantity: '',
+      price: '',
+      checked: false,
+      favorite: false
+    });
+    render(currentList);
+    this.parentNode.getElementsByTagName('input')[0].value = '';
+    matchList.innerHTML = '';
+    matchList.classList.add('hidden');
+  }
 });
 
 // unchecking favorites

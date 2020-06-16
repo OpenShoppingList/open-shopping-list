@@ -19,7 +19,7 @@
 
 <html>
 <head>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
   <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
@@ -129,6 +129,13 @@
         </li>
       </ul>
     </section>
+    <div class="add-item" id="add-item">
+      <div class="add-item-bar">
+        <input type="text" id="add-item-input" placeholder="Add Item...">
+        <button id="add-item-button">Add</button>
+      </div>
+      <div id="match-list" class="hidden"></div>
+    </div>
     <button id="delete">
       <img data-color-scheme="light" src="img/fontawesome/solid/trash.svg" alt="trash icon">
       <img data-color-scheme="dark" src="img/fontawesome/solid/trash-dark.svg" alt="trash icon dark">
@@ -138,5 +145,6 @@
   <script type="text/javascript" defer src="cordova.js"></script>
   <script type="text/javascript" defer src="js/nicesize.min.js"></script>
   <script type="text/javascript" defer src="js/index.js"></script>
+  <script type="text/javascript" defer src="js/search.js"></script>
 </body>
 </html>
