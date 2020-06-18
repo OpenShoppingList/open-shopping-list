@@ -344,6 +344,8 @@ window.addEventListener('hashchange', function(event) {
     addItemButton.classList.remove('hidden');
   }
   if(hash === '#favorites') {
+    let addItemButton = document.getElementById('add-item');
+    addItemButton.classList.add('hidden');
     render(list, true);
   }
   if(hash === '#edit-item') {
