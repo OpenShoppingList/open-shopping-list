@@ -1,7 +1,7 @@
 const addItemInput = document.getElementById('add-item-input');
 const matchList = document.getElementById('match-list');
 
-var getJSON = function(url) {
+function getJSON(url) {
     return new Promise(function(resolve, reject) {
       var xhr = new XMLHttpRequest();
       xhr.open('get', url, true);
@@ -20,7 +20,7 @@ var getJSON = function(url) {
 
 // fetches the products_xx_xx.json
 const products = [];
-loadData = function () {
+function loadData() {
     getJSON('data/products_en_US.json').then(function(data) {
         products.push(...data);
     }, function(status) {
@@ -33,7 +33,7 @@ function searchProducts(searchText) {
     // Get matches to current text input
     let matches = products.filter(function(product) {
         const regex = new RegExp('^' + searchText, 'gi');
-        return product.name.match(regex);
+        return product.name.match(regex) || product.plural.match(regex);
     });
 
     if(searchText.length === 0) {

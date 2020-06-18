@@ -1,14 +1,114 @@
 [
     {
-        "name": "Apple"
+        "name": "Apple",
+        "plural": "Apples"
     },
     {
-        "name": "Banana"
+        "name": "Banana",
+        "plural": "Bananas"
     },
     {
-        "name": "Orange"
+        "name": "Broccoli",
+        "plural": "Broccolis"
     },
     {
-        "name": "Pineapple"
+        "name": "Cheese",
+        "plural": "Cheeses"
+    },
+    {
+        "name": "Orange",
+        "plural": "Oranges"
+    },
+    {
+        "name": "Pineapple",
+        "plural": "Pineapples"
+    },
+    {
+        "name": "Milk",
+        "plural": "Milk"
+    },
+    {
+        "name": "Egg",
+        "plural": "Eggs"
+    },
+    {
+        "name": "Tomatoe",
+        "plural": "Tomatoes"
+    },
+    {
+        "name": "Grape",
+        "plural": "Grapes"
+    },
+    {
+        "name": "Berry",
+        "plural": "Berries"
+    },
+    {
+        "name": "Melon",
+        "plural": "Melons"
+    },
+    {
+        "name": "Lemon",
+        "plural": "Lemons"
+    },
+    {
+        "name": "Mushroom",
+        "plural": "Musrooms"
+    },
+    {
+        "name": "Garlic",
+        "plural": "Garlics"
+    },
+    {
+        "name": "Potatoe",
+        "plural": "Potatoes"
+    },
+    {
+        "name": "Onion",
+        "plural": "Onions"
+    },
+    {
+        "name": "Carrot",
+        "plural": "Carrots"
+    },
+    {
+        "name": "Salad",
+        "plural": "Salads"
+    },
+    {
+        "name": "Zucchini",
+        "plural": "Zucchinis"
+    },
+    {
+        "name": "Beef",
+        "plural": "Beefs"
+    },
+    {
+        "name": "Sausage",
+        "plural": "Sausages"
+    },
+    {
+        "name": "Bacon",
+        "plural": "Bacons"
+    },
+    {
+        "name": "Fish",
+        "plural": "Fish"
+    },
+    {
+        "name": "Pork",
+        "plural": "Pork"
+    },
+    {
+        "name": "Poultry",
+        "plural": "Poultries"
+    },
+    {
+        "name": "Pizza",
+        "plural": "Pizzas"
+    },
+    {
+        "name": "Vegetable",
+        "plural": "Vegetables"
     }
 ]
