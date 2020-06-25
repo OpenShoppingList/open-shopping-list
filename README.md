@@ -4,6 +4,7 @@ An easy shopping list app for your smartphone.
 ## Features
 * Create multiple lists to organize items by store or occasion.
 * Add extra information to indicate the quantity, price etc.
+* Add Items faster with an autocompletion feature.
 * Completely free without ads or premium features to download for Android.
 
 ## License

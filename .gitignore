@@ -13,6 +13,10 @@ prepros.config
 # IntelliJ IDEA
 .idea
 
+# css files
+.css
+.css.map
+
 # Logs
 logs
 *.log
