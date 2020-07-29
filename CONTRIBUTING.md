@@ -164,7 +164,7 @@ The content of the commit message body should contain:
 
 ## <a name="rules"></a> Build the project
 
-A detailed description of how to build the project can be found in the [developer docs](dev-doc).
+A detailed description of how to build the project can be found in the [developer docs](https://github.com/QuickWrite/open-shopping-list/blob/master/docs/DEVELOPER.md).
 
 ## Attribution
 
