@@ -8,12 +8,12 @@ It also explains the basic mechanics of using `git`, `node`, and `yarn`.
 * [Installing NPM Modules](#installing-npm-modules)
 * [Building](#building)
 
-See the [contribution guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md)
-if you'd like to contribute to Angular.
+See the [contribution guidelines](https://github.com/OpenShoppingList/open-shopping-list/blob/master/CONTRIBUTING.md)
+if you'd like to contribute to **open-shopping-list**.
 
 ## Prerequisite Software
 
-Before you can build and test Angular, you must install and configure the
+Before you can build and test **open-shopping-list**, you must install and configure the
 following products on your development machine:
 
 * [Git](http://git-scm.com) and/or the **GitHub app** (for [Mac](http://mac.github.com) or
@@ -23,11 +23,6 @@ following products on your development machine:
 * [Node.js](http://nodejs.org), (version specified in the engines field of [`package.json`](../package.json)) which is used to run a development web server,
   run tests, and generate distributable files.
 
-* [Yarn](https://yarnpkg.com) (version specified in the engines field of [`package.json`](../package.json)) which is used to install dependencies.
-
-* [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) which is used
-  to execute the selenium standalone server for e2e testing.
-
 ## Getting the Sources
 
 Fork and clone the **open shopping list** repository:
@@ -35,7 +30,7 @@ Fork and clone the **open shopping list** repository:
 1. Login to your GitHub account or create one by following the instructions given
    [here](https://github.com/signup/free).
 2. [Fork](http://help.github.com/forking) the [main **open shopping list**
-   repository](https://github.com/quickwrite/open-shopping-list).
+   repository](https://github.com/OpenShoppingList/open-shopping-list).
 3. Clone your fork of the **open shopping list** repository and define an `upstream` remote pointing back to
    the **open shopping list** repository that you forked in the first place.
 
@@ -47,7 +42,7 @@ git clone git@github.com:<github username>/open-shopping-list.git
 cd open-shopping-list
 
 # Add the main Angular repository as an upstream remote to your repository:
-git remote add upstream https://github.com/quickwrite/open-shopping-list.git
+git remote add upstream https://github.com/OpenShoppingList/open-shopping-list.git
 ```
 
 ## Installing NPM Modules

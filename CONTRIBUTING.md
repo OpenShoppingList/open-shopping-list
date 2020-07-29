@@ -15,7 +15,7 @@ As a contributor, here are the guidelines we would like you to follow:
 ## <a name="coc"></a> Code of Conduct
 
 Help us keep **open shopping list** open and inclusive.
-Please read and follow our [Code of Conduct][coc].
+Please read and follow our [Code of Conduct](https://github.com/OpenShoppingList/open-shopping-list/blob/master/CODE_OF_CONDUCT.md).
 
 ## <a name="question"></a> Got a Question or Problem?
 
@@ -32,7 +32,7 @@ To save your and our time, we will systematically close all issues that are requ
 
 ## <a name="issue"></a> Found a Bug?
 
-If you find a bug in the source code, you can help us by [submitting an issue](#submit-issue) to our [GitHub Repository][github].
+If you find a bug in the source code, you can help us by [submitting an issue](#submit-issue) to our [GitHub Repository](https://github.com/OpenShoppingList/open-shopping-list/pulls).
 Even better, you can [submit a Pull Request](#submit-pr) with a fix.
 
 
@@ -72,7 +72,7 @@ Unfortunately, we are not able to investigate / fix bugs without a minimal repro
 
 Before you submit your Pull Request (PR) consider the following guidelines:
 
-1. Search [GitHub](https://github.com/quickwrite/open-shopping-list/pulls) for an open or closed PR that relates to your submission.
+1. Search [GitHub](https://github.com/OpenShoppingList/open-shopping-list/pulls) for an open or closed PR that relates to your submission.
    You don't want to duplicate existing efforts.
 
 2. Be sure that an issue describes the problem you're fixing, or documents the design for the feature you'd like to add.
@@ -164,7 +164,7 @@ The content of the commit message body should contain:
 
 ## <a name="rules"></a> Build the project
 
-A detailed description of how to build the project can be found in the [developer docs](https://github.com/QuickWrite/open-shopping-list/blob/master/docs/DEVELOPER.md).
+A detailed description of how to build the project can be found in the [developer docs](https://github.com/OpenShoppingList/open-shopping-list/blob/master/docs/DEVELOPER.md).
 
 ## Attribution
 
