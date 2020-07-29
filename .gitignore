@@ -14,8 +14,8 @@ prepros.config
 .idea
 
 # css files
-.css
-.css.map
+*.css
+*.css.map
 
 # Logs
 logs
@@ -121,3 +121,13 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Windows command line scripts
+*.bat
+*.cmd
+
+# PowerShell scripts
+*.ps1
+
+# Backup files
+*.backup

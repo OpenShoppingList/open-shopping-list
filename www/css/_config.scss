@@ -1,21 +1,19 @@
-//scss configuration
-
-//colors
+//Colours:
 $base-color: #fff;
 $primary-accent-color: #766dff;
 $primary-color: #484554;
 $secondary-accent-color: #000;
 $secondary-color: #ada9bb;
 
-//dark mode colors
+//Dark-mode colours:
 $base-color-dark: #1b1d20;
 $primary-accent-color-dark: #fff;
 $primary-color-dark: #fff;
 $secondary-accent-color-dark: #fff;
 $secondary-color-dark: #fff;
 
-// default stylings
-	:root {
+//Defaults:
+:root {
 	--base-color: #{$base-color};
 	--ns-height: 1vh;
 	--ns-width: 1vw;
@@ -29,7 +27,7 @@ $secondary-color-dark: #fff;
 	font-size: calc(1rem + (var(--ns-width) * .5));
 	font-size: calc(1.1rem + (var(--ns-width) * .55));
 	font-weight: 400;
-	//font-weight: 300-700[300=light, 400=regular, 500=medium, 600=semi-bold, 700=bold]
+	//font-weight: 300-700[300=light, 400=regular, 500=medium, 600=semi-bold, 700=bold] //QUESTION(Zink10Craft): Is this commented styling still needed?
 	overflow: hidden;
 	scroll-behavior: smooth;
   box-sizing: border-box;
@@ -106,6 +104,7 @@ img {
 		overflow-y: auto;
 		overflow-x: hidden;
 	}
+
   #not-supported {
     display: none;
   }

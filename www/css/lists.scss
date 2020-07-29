@@ -1,151 +1,35 @@
 @use '_config.scss';
 
-h1 {
-  font-size: 1.5em;
-}
-
-h2 {
-  font-size: 1.25em;
-}
-
-#nav-toggle {
-  display: none;
-}
-
-.hidden {
-  display: none !important;
-}
-
-nav {
-  align-items: center;
-  background: var(--base-color);
-  display: flex;
-  flex-flow: column nowrap;
-  height: 100%;
-  left: 0;
-  padding: 0 1em;
-  position: fixed;
-  text-align: left;
-  top: 0;
-  transform: translate(-100%, 0);
-  transition: transform .5s, visibility 0s .5s;
-  visibility: hidden;
-  width: 60%;
-  will-change: transform, visibility;
-  z-index: 3;
-
-  > * {
-    width: 100%;
-  }
-
-  header {
-    display: flex;
-    background: config.$primary-accent-color;
-    color: config.$base-color;
-    flex-flow: column nowrap;
-    align-items: flex-start;
-    padding: inherit;
-    width: calc(100% + 2em);
-    flex: auto 0 0;
-    justify-content: space-evenly;
-
-    img {
-      display: flex;
-      box-shadow: 0 0 1em config.$primary-color;
-      height: 5em;
-      width: 3.66em;
-      border-radius: 0.83em 0.29em  0.29em  0.29em;
-      object-fit: cover;
-      margin: .75em 0 .375em 0;
-    }
-
-    h1 {
-      margin: calc(.375em / 1.5) 0 calc(.75em / 1.5) 0;
-    }
-
-  }
-
-  h2 {
-    margin: .5em 0 .25em 0;
-  }
-
-  ul {
-    padding: 0 0 0 .5em;
-    list-style: none;
-  }
-
-  button {
-    display: flex;
-    font-size: 1em;
-    background: none;
-    margin: .25em 0 .5em 0;
-
-    img {
-      width: 1em;
-      margin: 0 .5em 0 0;
-    }
-
-  }
-
-  > a {
-    display: flex;
-    margin: auto 0 .5em 0;
-    position: relative;
-
-    &::before {
-      display: flex;
-      content: '';
-      width: 100%;
-      height: .1em;
-      border-radius: .05em;
-      background: var(--secondary-color);
-      position: absolute;
-      top: -.25em;
-    }
-
-    img {
-      width: 1em;
-      height: 100%;
-      margin: 0 .5em 0 0;
-    }
-
-  }
-
-}
-
-#nav-toggle:checked + nav {
-  transform: translate(0, 0);
-  visibility: visible;
-  transition: transform .5s, visibility 0s;
-}
-
+//Add item functionality:
 .add-item {
   display: contents;
   flex-flow: row nowrap;
   margin: .25em 0 0 0;
   padding: 0 .25em;
 
+  //Search bar with button:
   .add-item-bar {
     width: 100%;
     display: flex;
     position: initial;
     z-index: 1001;
-  }
 
-  input {
-    border: .2em solid var(--secondary-color);
-    border-radius: .25em;
-    padding: .5em;
-    flex: auto 1 1;
-    margin: 0 .5em 0 0;
-    transition: border .15s;
+    //Input:
+    input {
+      border: .2em solid var(--secondary-color);
+      border-radius: .25em;
+      padding: .5em;
+      flex: auto 1 1;
+      margin: 0 .5em 0 0;
+      transition: border .15s;
 
-    &:hover, &:active, &:focus {
-      border: .2em solid var(--primary-color);
+      &:hover, &:active, &:focus {
+        border: .2em solid var(--primary-color);
+      }
     }
-
   }
 
+  //The button:
   button {
     border-radius: .25em;
     padding: .5em;
@@ -154,6 +38,7 @@ nav {
     flex: auto 0 0;
   }
 
+  //The search results:
   #match-list {
     position: absolute;
     bottom: 0;
@@ -164,34 +49,13 @@ nav {
     padding: 1em 1em 0 1em;
     z-index: 1000;
 
+    //One of the search results:
     .card {
       border-top: 1px solid #998;
       border-bottom: 1px solid #998;
       cursor: pointer;
     }
   }
-
-}
-
-#nav-backdrop {
-  background: rgba(0, 0, 0, .5) !important;
-  display: flex;
-  height: 100%;
-  left: 0;
-  opacity: 0;
-  position: fixed;
-  top: 0;
-  transition: opacity .5s, visibility 0s .5s;
-  visibility: hidden;
-  width: 100%;
-  will-change: opacity, visibility;
-  z-index: 2;
-}
-
-#nav-toggle:checked ~ #nav-backdrop {
-  opacity: 1;
-  visibility: visible;
-  transition: visibility 0s, opacity .5s;
 }
 
 body > header {
@@ -230,7 +94,6 @@ body > header {
     flex: auto 0 0;
     margin: 0 0 0 auto;
   }
-
 }
 
 main {
@@ -245,7 +108,6 @@ main {
     &:target {
       display: flex;
     }
-
   }
 
   .list {
@@ -298,7 +160,6 @@ main {
           display: none;
         }
 
-
         label {
           display: flex;
 
@@ -316,7 +177,6 @@ main {
           input[type='checkbox']:not(:checked) ~ img[data-checked='false'][data-color-scheme='light'] {
             display: initial !important;
           }
-
         }
 
         a {
@@ -335,24 +195,19 @@ main {
           .price {
             margin: 0 .25em;
           }
-
         }
-
       }
-
     }
 
     details {
       margin: .25em 0 0 0;
     }
-
   }
 
   .edit {
     font-size: 1rem;
 
     ul li {
-
       label {
         align-items: center;
 
@@ -373,13 +228,11 @@ main {
             -webkit-appearance: none;
             margin: 0;
           }
-
         }
 
         img {
           margin: 0 .25em 0 0;
         }
-
       }
 
       button {
@@ -389,9 +242,7 @@ main {
         padding: .5em;
         font-size: .75em;
       }
-
     }
-
   }
 
   #delete {
@@ -414,52 +265,10 @@ main {
       width: 1em;
       margin: 0 .25em 0 0;
     }
-
   }
 
   #favorites:target ~ #delete,
   #settings:target ~ #delete {
     visibility: hidden;
   }
-
-}
-
-@media screen and (prefers-color-scheme: dark){
-
-  header {
-      background: config.$base-color-dark !important;
-      border-bottom: .1em solid config.$primary-accent-color-dark;
-  }
-
-  main .list ul li label {
-
-    input[type='checkbox']:checked ~ img[data-checked='true'][data-color-scheme='light'],
-    input[type='checkbox']:not(:checked) ~ img[data-checked='false'][data-color-scheme='light'] {
-      display: none !important;
-    }
-
-    input[type='checkbox']:checked ~ img[data-checked='true'][data-color-scheme='dark'],
-    input[type='checkbox']:not(:checked) ~ img[data-checked='false'][data-color-scheme='dark'] {
-      display: initial !important;
-    }
-
-  }
-
-}
-
-@media screen and (max-width: calc((1.1rem + .55vw) * 18)), screen and (max-width: 21.94rem) {
-
-  * {
-    display: none !important;
-  }
-
-  :root, body {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: var(--primary-accent-color);
-    height: calc(var(--ns-height) * 100);
-  }
-
 }

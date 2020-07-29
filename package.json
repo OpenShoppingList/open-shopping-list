@@ -2,15 +2,23 @@
   "name": "io.github.quickwrite.openshoppinglist",
   "displayName": "Open Shopping List",
   "version": "1.0.0",
+  "author": "open-shopping-list project",
+  "contributors": [
+    "QuickWrite (https://github.com/QuickWrite)",
+    "Locxter (https://github.com/Locxter)",
+    "Zink10Craft (https://github.com/Zink10Craft)"
+  ],
   "description": "An open source shopping list to help you with shopping.",
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "homepage": "https://quickwrite.github.io/open-shopping-list/",
+  "repository": "github:QuickWrite/open-shopping-list",
+  "bugs": "https://github.com/QuickWrite/open-shopping-list/issues",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "ecosystem:cordova"
-  ],
-  "author": "QuickWrite and Locxter",
   "license": "Apache-2.0",
   "dependencies": {
     "cordova-android": "^8.1.0",
