@@ -90,9 +90,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
 
 6. Follow our [Coding Rules](#rules).
 
-7. Commit your changes using a descriptive commit message that follows our [commit message conventions](#commit).
-   Adherence to these conventions is necessary because release notes are automatically generated from these messages.
-
+7. 
      ```shell
      git commit -a
      ```
@@ -155,22 +153,6 @@ To ensure consistency throughout the source code, keep these rules in mind as yo
 * All features or bug fixes **must be tested** by one or more specs (unit-tests).
 * All public API methods **must be documented**.
 
-
-##### Type
-
-Must be one of the following:
-
-* **build**: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
-* **ci**: Changes to our CI configuration files and scripts (example scopes: Circle, BrowserStack, SauceLabs)
-* **docs**: Documentation only changes
-* **feat**: A new feature
-* **fix**: A bug fix
-* **perf**: A code change that improves performance
-* **refactor**: A code change that neither fixes a bug nor adds a feature
-* **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-* **test**: Adding missing tests or correcting existing tests
-
-
 ### Revert commits
 
 If the commit reverts a previous commit, it should begin with `revert: `, followed by the header of the reverted commit.
@@ -182,7 +164,7 @@ The content of the commit message body should contain:
 
 ## <a name="rules"></a> Build the project
 
-A detailed description of how to build the project can be found in the [developer docs][dev-doc].
+A detailed description of how to build the project can be found in the [developer docs](dev-doc).
 
 ## Attribution
 
