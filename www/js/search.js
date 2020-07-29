@@ -33,7 +33,7 @@ function searchProducts(searchText) {
     // Get matches to current text input
     let matches = products.filter(function(product) {
         const regex = new RegExp('^' + searchText, 'gi');
-        return product.name.match(regex) || product.plural.match(regex);
+        return (product.match(regex)) ? product : false;
     });
 
     if(searchText.length === 0) {
@@ -52,8 +52,8 @@ function outputHTML(matches) {
     if(matches.length > 0) {
         const html = matches.map(function(match) {
             return `
-                <div class="card" onclick="addProduct('${match.name}')">
-                    <h4>${match.name}</h4>
+                <div class="card" onclick="addProduct('${match}')">
+                    <h4>${match}</h4>
                 </div>
             `;
         }).join('');
