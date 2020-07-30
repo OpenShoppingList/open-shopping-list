@@ -81,7 +81,7 @@ npm install
 As we use `.scss` to create our stylesheets, you have to compile those before you can actually build the project. If you use the command line version of [**Sass**](https://sass-lang.com), simply enter these commands inside the project to compile these files into `.css`:
 
 ```shell
-sass "www/css/core.scss" "www/css/core.css"
+sass "www/css/style.scss" "www/css/style.css"
 sass "www/css/navigation.scss" "www/css/navigation.css"
 sass "www/css/lists.scss" "www/css/lists.css"
 ```
