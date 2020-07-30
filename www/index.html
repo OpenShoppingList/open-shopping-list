@@ -1,151 +1,157 @@
-<!--
-    Licensed to the Open Shopping List (OSL) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership. The OSL licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
 
-    http://www.apache.org/licenses/LICENSE-2.0
+    <!-- Metadata -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta charset="utf-8">
 
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/lists.css">
 
-<html>
-<head>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="msapplication-tap-highlight" content="no">
-  <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-  <link rel="stylesheet" href="fonts/roboto/roboto.css">
-  <link rel="stylesheet" href="css/style.css">
-  <title>Open Shopping List</title>
-</head>
-<body>
-  <section id="not-supported">
-    <span>Your browser isn't supported, please update or switch to a more modern one...</span>
-  </section>
-  <input type="checkbox" id="nav-toggle">
-  <nav>
+    <!-- Fonts -->
+    <link rel="stylesheet" href="fonts/roboto/roboto.css">
+    <style media="screen">
+      #license::before {
+        width: 0%; /* TEMP(Zink10Craft): Only for now, to remove the line between the 'Settings' and the 'Licenses' Item */
+      }
+    </style>
+
+    <!-- Libraries and frameworks -->
+    <script type="text/javascript" defer src="cordova.js"></script>
+    <script type="text/javascript" defer src="js/third-party/nicesize.min.js"></script>
+
+    <!-- Site-specific scripts -->
+    <script type="text/javascript" src="js/core.js"></script>
+    <script type="text/javascript" defer src="js/index.js"></script>
+    <script type="text/javascript" defer src="js/search.js"></script>
+
+    <!-- Title -->
+    <title>Open Shopping List</title>
+
+  </head>
+  <body>
+
+    <!-- 'Not supported' message -->
+    <section id="not-supported">
+      <span>Your browser isn't supported, please update or switch to a more modern one...</span>
+    </section>
+
+    <!-- Navigation -->
+    <input type="checkbox" id="nav-toggle">
+    <nav>
+      <header>
+        <img src="img/icon.png" alt="app icon">
+        <h1>Open Shopping List</h1>
+      </header>
+      <h2>My Lists</h2>
+      <ul>
+      </ul>
+      <button id="add-list">
+        <img data-color-scheme="light" src="img/fontawesome/solid/plus.svg" alt="plus icon">
+        <img data-color-scheme="dark" src="img/fontawesome/solid/plus-dark.svg" alt="plus icon dark">
+        Add list
+      </button>
+      <a id="open-settings" href="settings.html" style="margin: 0px 0px 0.5em 0px;"> <!-- TEMP(Zink10Craft): Will be cleaned up later -->
+        <img data-color-scheme="light" src="img/fontawesome/solid/cog.svg" alt="cog icon">
+        <img data-color-scheme="dark" src="img/fontawesome/solid/cog-dark.svg" alt="cog icon dark">
+        Settings
+      </a>
+      <a id="license" href="licenses.html" style="margin: 0px 0px 0.5em 0px;"> <!-- TEMP(Zink10Craft): Will be cleaned up later -->
+        <img data-color-scheme="light" src="img/fontawesome/solid/check-circle.svg" alt="cog icon">
+        <img data-color-scheme="dark" src="img/fontawesome/solid/check-circle-dark.svg" alt="cog icon dark">
+        Licenses
+      </a>
+    </nav>
+    <label id="nav-backdrop" for="nav-toggle"></label>
+
+    <!-- Header -->
     <header>
-      <img src="img/icon.png" alt="app icon">
-      <h1>Open Shopping List</h1>
+      <label for="nav-toggle">
+        <img src="img/fontawesome/solid/bars.svg" alt="menu">
+      </label>
+      <a href="#favorites">
+        <img src="img/fontawesome/solid/heart-dark.svg" alt="favorites">
+      </a>
     </header>
-    <h2>My Lists</h2>
-    <ul>
-    </ul>
-    <button id="add-list">
-      <img data-color-scheme="light" src="img/fontawesome/solid/plus.svg" alt="plus icon">
-      <img data-color-scheme="dark" src="img/fontawesome/solid/plus-dark.svg" alt="plus icon dark">
-      Add list
-    </button>
-    <a id="open-settings" href="#settings">
-      <img data-color-scheme="light" src="img/fontawesome/solid/cog.svg" alt="cog icon">
-      <img data-color-scheme="dark" src="img/fontawesome/solid/cog-dark.svg" alt="cog icon dark">
-      Settings
-    </a>
-  </nav>
-  <label id="nav-backdrop" for="nav-toggle"></label>
-  <header>
-    <label for="nav-toggle">
-      <img src="img/fontawesome/solid/bars.svg" alt="menu">
-    </label>
-    <h1>Open Shopping List</h1>
-    <a href="#favorites">
-      <img src="img/fontawesome/solid/heart-dark.svg" alt="favorites">
-    </a>
-  </header>
-  <main>
-    <section id="favorites" class="list">
-      <h2>Favorites</h2>
-      <ul>
-        <li>No list selected</li>
-      </ul>
-    </section>
-    <section id="edit-item" class="list edit">
-      <h2>No item selected</h2>
-      <ul>
-        <li>
-          <label class="name">
-            Name:
-            <input type="text">
-          </label>
-        </li>
-        <li>
-          <label class="quantity">
-            Quantity:
-            <input type="text">
-          </label>
-        </li>
-        <li>
-          <label class="price">
-            Price:
-            <input type="number" min="0" step="0.01">
-            <span class="currency"></span>
-          </label>
-        </li>
-        <li>
-          <label class="checked">
-            <input type="checkbox">
-            <img data-checked="false" data-color-scheme="light" src="img/fontawesome/regular/circle.svg" alt="circle icon">
-            <img data-checked="false" data-color-scheme="dark" src="img/fontawesome/regular/circle-dark.svg" alt="circle icon dark">
-            <img data-checked="true" data-color-scheme="light" src="img/fontawesome/solid/check-circle.svg" alt="checked circle icon">
-            <img data-checked="true" data-color-scheme="dark" src="img/fontawesome/solid/check-circle-dark.svg" alt="checked circle icon dark">
-            Checked
-          </label>
-        </li>
-        <li>
-          <label class="favorite">
-            <input type="checkbox">
-            <img data-checked="false" data-color-scheme="light" src="img/fontawesome/regular/circle.svg" alt="circle icon">
-            <img data-checked="false" data-color-scheme="dark" src="img/fontawesome/regular/circle-dark.svg" alt="circle icon dark">
-            <img data-checked="true" data-color-scheme="light" src="img/fontawesome/solid/check-circle.svg" alt="checked circle icon">
-            <img data-checked="true" data-color-scheme="dark" src="img/fontawesome/solid/check-circle-dark.svg" alt="checked circle icon dark">
-            Favorite
-          </label>
-        </li>
-        <li>
-          <button class="save">Save</button>
-        </li>
-      </ul>
-    </section>
-    <section id="settings" class="list edit">
-      <h2>Settings</h2>
-      <ul>
-        <li>
-          <label class="currency">
-            Currency:
-            <input type="text">
-          </label>
-        </li>
-        <li>
-          <button class="save">Save</button>
-        </li>
-      </ul>
-      <a href="./data/licenses.html" class="licenses">Licenses</a>
-    </section>
-    <div class="add-item" id="add-item">
-      <div class="add-item-bar">
-        <input type="text" id="add-item-input" placeholder="Add Item...">
-        <button id="add-item-button">Add</button>
+
+    <!-- Main area -->
+    <main>
+      <section id="favorites" class="list">
+        <h2>Favorites</h2>
+        <ul>
+          <li>No list selected</li>
+        </ul>
+      </section>
+      <section id="edit-item" class="list edit">
+        <h2>No item selected</h2>
+        <ul>
+          <li>
+            <label class="name">
+              Name:
+              <input type="text">
+            </label>
+          </li>
+          <li>
+            <label class="quantity">
+              Quantity:
+              <input type="text">
+            </label>
+          </li>
+          <li>
+            <label class="price">
+              Price:
+              <input type="number" min="0" step="0.01">
+              <span class="currency"></span>
+            </label>
+          </li>
+          <li>
+            <label class="checked">
+              <input type="checkbox">
+              <img data-checked="false" data-color-scheme="light" src="img/fontawesome/regular/circle.svg" alt="circle icon">
+              <img data-checked="false" data-color-scheme="dark" src="img/fontawesome/regular/circle-dark.svg" alt="circle icon dark">
+              <img data-checked="true" data-color-scheme="light" src="img/fontawesome/solid/check-circle.svg" alt="checked circle icon">
+              <img data-checked="true" data-color-scheme="dark" src="img/fontawesome/solid/check-circle-dark.svg" alt="checked circle icon dark">
+              Checked
+            </label>
+          </li>
+          <li>
+            <label class="favorite">
+              <input type="checkbox">
+              <img data-checked="false" data-color-scheme="light" src="img/fontawesome/regular/circle.svg" alt="circle icon">
+              <img data-checked="false" data-color-scheme="dark" src="img/fontawesome/regular/circle-dark.svg" alt="circle icon dark">
+              <img data-checked="true" data-color-scheme="light" src="img/fontawesome/solid/check-circle.svg" alt="checked circle icon">
+              <img data-checked="true" data-color-scheme="dark" src="img/fontawesome/solid/check-circle-dark.svg" alt="checked circle icon dark">
+              Favorite
+            </label>
+          </li>
+          <li>
+            <button class="save">Save</button>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 'Add Item' search bar -->
+      <div class="add-item" id="add-item">
+        <div class="add-item-bar">
+          <input type="text" id="add-item-input" placeholder="Add Item...">
+          <button id="add-item-button">Add</button>
+        </div>
+        <div id="match-list" class="hidden"></div>
       </div>
-      <div id="match-list" class="hidden"></div>
-    </div>
-    <button id="delete">
-      <img data-color-scheme="light" src="img/fontawesome/solid/trash.svg" alt="trash icon">
-      <img data-color-scheme="dark" src="img/fontawesome/solid/trash-dark.svg" alt="trash icon dark">
-      Delete
-    </button>
-  </main>
-  <script type="text/javascript" defer src="cordova.js"></script>
-  <script type="text/javascript" defer src="js/nicesize.min.js"></script>
-  <script type="text/javascript" defer src="js/index.js"></script>
-  <script type="text/javascript" defer src="js/search.js"></script>
-</body>
+
+      <!-- 'Delete' button -->
+      <button id="delete">
+        <img data-color-scheme="light" src="img/fontawesome/solid/trash.svg" alt="trash icon">
+        <img data-color-scheme="dark" src="img/fontawesome/solid/trash-dark.svg" alt="trash icon dark">
+        Delete
+      </button>
+
+    </main>
+  </body>
 </html>

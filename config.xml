@@ -5,7 +5,7 @@
         An open source shopping list to help you with shopping.
     </description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
-        QuickWrite and Locxter
+        QuickWrite, Locxter and Zink10Craft
     </author>
 	<icon src="www/img/icon.png" />
     <content src="index.html" />

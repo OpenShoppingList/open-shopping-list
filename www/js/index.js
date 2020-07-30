@@ -1,86 +1,41 @@
-/*
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.  See the NOTICE file
-distributed with this work for additional information
-regarding copyright ownership.  The ASF licenses this file
-to you under the Apache License, Version 2.0 (the
-"License"); you may not use this file except in compliance
-with the License.  You may obtain a copy of the License at
-http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- KIND, either express or implied.  See the License for the
-specific language governing permissions and limitations
-under the License.
-*/
+// constants:
+const NAVIGATION = document.getElementById('nav-toggle');
+const ADD_LIST_BUTTON = document.getElementById('add-list');
+const OPEN_SETTINGS_BUTTON = document.getElementById('open-settings');
 
-// an example data structure
-var data = JSON.parse(localStorage.getItem('data'));
-if (!data) {
-  data = {
-    selectedList: 0,
-    lists: [
-      {
-        name: 'Example list',
-        items: [
-          {
-            name: 'Example item',
-            quantity: '500g',
-            price: '5',
-            checked: false,
-            favorite: false
-          }
-        ]
-      }
-    ],
-    settings: {
-      currency: '$'
-    }
-  };
-  localStorage.setItem('data', JSON.stringify(data));
-}
-
-// closing the navigation
-function closeNav() {
-  document.getElementById('nav-toggle').checked = false;
-}
-
-// adding a list
-function addList() {
+// opening a dialog for adding a new list
+ADD_LIST_BUTTON.addEventListener('click', (event) => {
   navigator.notification.prompt('Please enter the list name', function(results) {
     let name = results.input1;
     let isUsed = false;
+
     for (let i = 0; i < data.lists.length; i++) {
       if (data.lists[i].name === name || !name) {
         isUsed = true;
       }
     }
+
     if (isUsed === false) {
       data.lists.push({
         name: name,
         items: []
       });
       render(data.lists.length - 1);
-      closeNav();
+      NAVIGATION.checked = false;
       window.location.hash = '#list-' + (data.lists.length - 1);
     }
   }, 'Add a list');
-}
+});
 
 // rendering everything
 var item;
-function render(firstList, lastList, onlyFavorites = false) {
-  // adding a second parameter if not parsed probably
-  if (!lastList) {
-    lastList = firstList;
-  }
+function render(firstList, lastList = firstList, onlyFavorites = false) {
   if (lastList === false || lastList === true) {
     onlyFavorites = lastList;
-    lastList = firstList;
   }
+
   // checking for data validity
-  if (firstList >= 0 && firstList < data.lists.length && lastList >= 0 && lastList < data.lists.length && firstList <= lastList) {
+  if (firstList >= 0 && firstList < data.lists.length && lastList >= 0 && lastList < data.lists.length && firstList <= lastList) { //QUESTION(Zink10Craft): Do we really need to check the bounds?
     // running through the lists
     for (let i = firstList; i < lastList + 1; i++) {
       //only when rendering all list items
@@ -88,7 +43,11 @@ function render(firstList, lastList, onlyFavorites = false) {
         // adding new lists to the navigation if necessary
         if (!document.getElementsByTagName('nav')[0].getElementsByTagName('ul')[0].getElementsByTagName('li')[i]) {
           let navListTitle = document.createElement('li');
-          navListTitle.addEventListener('click', closeNav);
+
+          navListTitle.addEventListener('click', (event) => {
+            NAVIGATION.checked = false;
+          });
+
           let navListTitleLink = document.createElement('a');
           navListTitleLink.href = '#list-' + i;
           let navListTitleLinkText = document.createTextNode(data.lists[i].name);
@@ -278,12 +237,6 @@ function render(firstList, lastList, onlyFavorites = false) {
   }
 }
 
-// opening a dialog for adding a new list
-document.getElementById('add-list').addEventListener('click', addList);
-
-// close navigation when clicking on the settings button
-document.getElementById('open-settings').addEventListener('click', closeNav);
-
 // updating the stored list item data when clicking on the save button in the edit menu
 document.getElementById('edit-item').getElementsByClassName('save')[0].addEventListener('click', function() {
   if (list !== undefined && item !== undefined) {
@@ -294,13 +247,6 @@ document.getElementById('edit-item').getElementsByClassName('save')[0].addEventL
     data.lists[list].items[item].favorite = this.parentNode.parentNode.getElementsByClassName('favorite')[0].getElementsByTagName('input')[0].checked;
     window.location.hash = '#list-' + list;
   }
-});
-
-// updating the settings when clicking on the save button in the settings
-document.getElementById('settings').getElementsByClassName('save')[0].addEventListener('click', function() {
-  data.settings.currency = this.parentNode.parentNode.getElementsByClassName('currency')[0].getElementsByTagName('input')[0].value;
-  render(0, data.lists.length - 1);
-  window.location.hash = '#list-' + list;
 });
 
 // deleting the currently selected list or item when clicking the delete button
@@ -368,12 +314,6 @@ window.addEventListener('hashchange', function(event) {
   }
 });
 
-// storing everything before the app is put into background or closed
-document.addEventListener('pause', function(event) {
-  localStorage.setItem('data', JSON.stringify(data));
-});
-
-
 document.getElementById('add-item-input').addEventListener('keypress', function(event) {
   let name = this.value;
   if (name && event.key === 'Enter') {
@@ -424,6 +364,6 @@ for (var i = 0; i < data.lists.length; i++) {
 }
 
 // rendering everything on load
-document.getElementById('nav-toggle').checked = false;
+NAVIGATION.checked = false;
 render(0, data.lists.length - 1);
 window.location.hash = '#list-' + list;

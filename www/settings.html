@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+
+    <!-- Metadata -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta charset="utf-8">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/lists.css">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="fonts/roboto/roboto.css">
+
+    <!-- Libraries and frameworks -->
+    <script type="text/javascript" src="cordova.js" charset="utf-8" defer></script>
+    <script type="text/javascript" src="js/third-party/nicesize.min.js" charset="utf-8" defer></script>
+
+    <!-- Site-specific scripts -->
+    <script type="text/javascript" src="js/core.js" charset="utf-8"></script>
+
+    <!-- Title -->
+    <title>Open Shopping List - Settings</title>
+
+  </head>
+  <body>
+
+    <!-- Settings -->
+    <main style="padding: 0.5em;"> <!-- TODO(Zink10Craft): Will be cleaned up later -->
+      <section id="settings" class="list edit" style="display: flex;"> <!-- TODO(Zink10Craft): Will be cleaned up later -->
+        <h2>Settings</h2>
+        <ul>
+          <li>
+            <label class="currency">
+              Currency:
+              <input type="text" id="currency-input" onchange="data.settings.currency = this.value;"> <!-- TODO(Zink10Craft): Change this input field to a list of all currencies -->
+            </label>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+  </body>
+</html>
