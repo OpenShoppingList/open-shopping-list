@@ -12,9 +12,9 @@
   "keywords": [
     "ecosystem:cordova"
   ],
-  "homepage": "https://quickwrite.github.io/open-shopping-list/",
-  "repository": "github:QuickWrite/open-shopping-list",
-  "bugs": "https://github.com/QuickWrite/open-shopping-list/issues",
+  "homepage": "https://OpenShoppingList.github.io/",
+  "repository": "github:OpenShoppingList/open-shopping-list",
+  "bugs": "https://github.com/OpenShoppingList/open-shopping-list/issues",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
