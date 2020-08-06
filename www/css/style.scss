@@ -1,4 +1,6 @@
-@use '_config.scss';
+@use 'components/config';
+@use 'components/lists';
+@use 'components/navigation';
 
 //Headings: //TODO(Zink10Craft): Remove the h1 override and simply replace all h1's with h2's
 h1 {

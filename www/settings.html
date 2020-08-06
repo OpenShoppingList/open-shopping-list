@@ -11,7 +11,6 @@
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/lists.css">
 
     <!-- Fonts -->
     <link rel="stylesheet" href="fonts/roboto/roboto.css">
@@ -29,6 +28,37 @@
   </head>
   <body>
 
+
+    <!-- Navigation -->
+    <input type="checkbox" id="nav-toggle">
+    <nav>
+      <header>
+        <img src="img/icon.png" alt="app icon">
+        <h1>Open Shopping List</h1>
+      </header>
+      <h2>My Lists</h2>
+      <ul>
+      </ul>
+      <button id="add-list">
+        <img data-color-scheme="light" src="img/fontawesome/solid/plus.svg" alt="plus icon">
+        <img data-color-scheme="dark" src="img/fontawesome/solid/plus-dark.svg" alt="plus icon dark">
+        Add list
+      </button>
+      <a id="open-settings" href="settings.html" style="margin: 0px 0px 0.5em 0px;"> <!-- TEMP(Zink10Craft): Will be cleaned up later -->
+        <img data-color-scheme="light" src="img/fontawesome/solid/cog.svg" alt="cog icon">
+        <img data-color-scheme="dark" src="img/fontawesome/solid/cog-dark.svg" alt="cog icon dark">
+        Settings
+      </a>
+    </nav>
+    <label id="nav-backdrop" for="nav-toggle"></label>
+
+    <!-- Header -->
+    <header>
+      <label for="nav-toggle">
+        <img src="img/fontawesome/solid/bars.svg" alt="menu">
+      </label>
+    </header>
+
     <!-- Settings -->
     <main style="padding: 0.5em;"> <!-- TODO(Zink10Craft): Will be cleaned up later -->
       <section id="settings" class="list edit" style="display: flex;"> <!-- TODO(Zink10Craft): Will be cleaned up later -->
@@ -41,6 +71,11 @@
             </label>
           </li>
         </ul>
+        <a id="license" href="licenses.html">
+          <img data-color-scheme="light" src="img/fontawesome/solid/check-circle.svg" alt="cog icon">
+          <img data-color-scheme="dark" src="img/fontawesome/solid/check-circle-dark.svg" alt="cog icon dark">
+          Licenses
+        </a>
       </section>
     </main>
 
