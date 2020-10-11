@@ -1,51 +1,11 @@
-@use 'components/config';
-@use 'components/lists';
-@use 'components/navigation';
+/*
+This is the main .scss file.
+It is only a file where all of the others are combined.
+*/
 
-//Headings: //TODO(Zink10Craft): Remove the h1 override and simply replace all h1's with h2's
-h1 {
-  font-size: 1.5em;
-}
-h2 {
-  font-size: 1.25em;
-}
+@import 'components/variables';
+@import 'components/mixins';
 
-//Single-style classes:
-.hidden {
-  display: none !important;
-}
-
-//All styling based on the theme (light or dark):
-@media screen and (prefers-color-scheme: dark){
-  header {
-      background: config.$base-color-dark !important;
-      border-bottom: .1em solid config.$primary-accent-color-dark;
-  }
-
-  //Set checkbox-symbols for checked and not checked.
-  main .list ul li label {
-    input[type='checkbox']:checked ~ img[data-checked='true'][data-color-scheme='light'],
-    input[type='checkbox']:not(:checked) ~ img[data-checked='false'][data-color-scheme='light'] {
-      display: none !important;
-    }
-    input[type='checkbox']:checked ~ img[data-checked='true'][data-color-scheme='dark'],
-    input[type='checkbox']:not(:checked) ~ img[data-checked='false'][data-color-scheme='dark'] {
-      display: initial !important;
-    }
-  }
-}
-
-@media screen and (max-width: calc((1.1rem + .55vw) * 18)), screen and (max-width: 21.94rem) {
-  * {
-    display: none !important;
-  }
-
-  :root, body {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: var(--primary-accent-color);
-    height: calc(var(--ns-height) * 100);
-  }
-}
+@import 'components/config';
+@import 'components/header';
+@import 'components/lists';
