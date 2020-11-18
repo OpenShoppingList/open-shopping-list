@@ -13,6 +13,7 @@ header {
         width: $row-height !important;
         height: $row-height !important;
         margin: 0 auto 0 0;
+        cursor: pointer;
 
         img {
             height: #{$row-height / 2};
@@ -30,11 +31,11 @@ header {
         h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
-            text-shadow: 4px 4px #000000;
+            text-shadow: 0 3px 5px #ccc;
         }
 
         span {
-            text-shadow: 2px 2px #000000;
+            text-shadow: 0 3px 5px #ccc;
         }
     }
 
@@ -48,7 +49,7 @@ header {
 
         background-color: #fff;
         border-radius: 4px;
-        box-shadow: 4px 4px;
+        box-shadow: 0 5px 30px #777;
 
         input {
             width: 90%;
